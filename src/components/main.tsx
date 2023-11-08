@@ -1,6 +1,6 @@
 import React from 'react';
 import MoviesList from './movies';
-import PromoFilm from './film';
+import PromoFilm from './promo-film';
 import Genres from './genre';
 import Footer from './footer';
 
@@ -27,9 +27,9 @@ function MainPage({ promoFilmTitle, promoFilmGenre, promoFilmReleaseDate }: Main
       />
 
 
-      <div className="page-content">
-        <section className="catalog">
-          <h2 className="catalog__title visually-hidden">Catalog</h2>
+      <div className='page-content'>
+        <section className='catalog'>
+          <h2 className='catalog__title visually-hidden'>Catalog</h2>
 
           <Genres
             genres={genres}
@@ -38,8 +38,8 @@ function MainPage({ promoFilmTitle, promoFilmGenre, promoFilmReleaseDate }: Main
 
           <MoviesList />
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
+          <div className='catalog__more'>
+            <button className='catalog__button' type='button'>Show more</button>
           </div>
         </section>
 

@@ -86,7 +86,7 @@ const movies = [
 
 function MoviesList() {
   return (
-    <div className="catalog__films-list">
+    <div className='catalog__films-list'>
       {movies.map((movie) => (
         <MovieCardProps key={movie.name} src={movie.src} name={movie.name} />
       ))}

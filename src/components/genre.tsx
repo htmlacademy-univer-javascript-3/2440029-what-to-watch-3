@@ -10,13 +10,13 @@ export function Genres({ genres, active }: GenresProps) {
 
     return (
       <li key={genre} className={`catalog__genres-item ${genreClass}`}>
-        <a href="#" className="catalog__genres-link">{genre}</a>
+        <a href='#' className='catalog__genres-link'>{genre}</a>
       </li>
     );
   };
 
   return (
-    <ul className="catalog__genres-list">
+    <ul className='catalog__genres-list'>
       {genres.map(renderGenreItem)}
     </ul>
   );
