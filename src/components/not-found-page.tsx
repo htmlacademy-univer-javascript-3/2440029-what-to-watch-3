@@ -6,17 +6,15 @@ const NotFoundPage = () => (
   <div>
     <h1>404 Not Found</h1>
     <p>Эта страница не найдена.</p>
-    <a href="/">Вернуться на главную</a>
+    <a href='/'>Вернуться на главную</a>
   </div>
 );
 
-NotFoundPage.propTypes = {
-
-};
+NotFoundPage.propTypes = {};
 
 type ProtectedWrapperProps = {
-    children: React.ReactNode;
-  };
+  children: React.ReactNode;
+};
 
 export const ProtectedWrapper = ({ children }: ProtectedWrapperProps) => {
   const navigate = useNavigate();
