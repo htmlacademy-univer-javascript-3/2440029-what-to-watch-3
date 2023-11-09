@@ -18,7 +18,7 @@ root.render(
     <App
       promoTitle={promoFilm.promoTitle}
       promoGenre={promoFilm.promoGenre}
-      promoReleaseDate={promoFilm.promoReleaseDate} 
+      promoReleaseDate={promoFilm.promoReleaseDate}
       films={films}
     />
   </React.StrictMode>

@@ -5,7 +5,7 @@ import ReviewForm from './review';
 
 function AddReview() {
   const {id} = useParams<{id: string}>();
-  const film = films.find((film) => film.id === id) || films[0];
+  const film = films.find((_film) => _film.id === id) || films[0];
 
   return (
     <section className='film-card film-card--full'>

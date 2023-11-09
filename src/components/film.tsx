@@ -3,10 +3,9 @@ import Footer from './footer';
 import { MovieCardProps } from './movie_card';
 import { Link, useParams } from 'react-router-dom';
 
-
-function Film({films: films}: {films: MovieCardProps[]}) {
-  const {id} = useParams<{id: string}>();
-  const film = films.find((film) => film.id === id);
+function Film({ films: films }: { films: MovieCardProps[] }) {
+  const { id } = useParams<{ id: string }>();
+  const film = films.find((_film) => _film.id === id);
   if (!film) {
     return <div>film not found</div>;
   }
@@ -16,10 +15,7 @@ function Film({films: films}: {films: MovieCardProps[]}) {
       <section className='film-card film-card--full'>
         <div className='film-card__hero'>
           <div className='film-card__bg'>
-            <img
-              src={film.previewSrc}
-              alt={film.title}
-            />
+            <img src={film.previewSrc} alt={film.title} />
           </div>
 
           <h1 className='visually-hidden'>WTW</h1>
@@ -59,22 +55,30 @@ function Film({films: films}: {films: MovieCardProps[]}) {
               </p>
 
               <div className='film-card__buttons'>
-                <Link to={`/player/${film.id}`} className='btn btn--play film-card__button'>
+                <Link
+                  to={`/player/${film.id}`}
+                  className='btn btn--play film-card__button'
+                >
                   <svg viewBox='0 0 19 19' width='19' height='19'>
                     <use xlinkHref='#play-s'></use>
                   </svg>
                   <span>Play</span>
                 </Link>
 
-                <Link to = {`/mylist`} className='btn btn--list film-card__button'>
+                <Link
+                  to={'/mylist'}
+                  className='btn btn--list film-card__button'
+                >
                   <svg viewBox='0 0 19 20' width='19' height='20'>
                     <use xlinkHref='#add'></use>
                   </svg>
                   <span>My list</span>
                   <span className='film-card__count'>3</span>
                 </Link>
-                
-                <Link to={`/films/${film.id}/review`} className="btn film-card__button">
+                <Link
+                  to={`/films/${film.id}/review`}
+                  className='btn film-card__button'
+                >
                   Add review
                 </Link>
               </div>
@@ -156,9 +160,9 @@ function Film({films: films}: {films: MovieCardProps[]}) {
                 />
               </div>
               <h3 className='small-film-card__title'>
-              <Link to={'/films/1'} className="small-film-card__link">
+                <Link to={'/films/1'} className='small-film-card__link'>
                   {'Fantastic Beasts: The Crimes of Grindelwald'}
-              </Link>
+                </Link>
               </h3>
             </article>
 

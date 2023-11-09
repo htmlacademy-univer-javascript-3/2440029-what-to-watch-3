@@ -1,10 +1,10 @@
-import { Link, useParams } from "react-router-dom";
-import { films } from "../mocks/films";
+import { Link, useParams } from 'react-router-dom';
+import { films } from '../mocks/films';
 
 
 function Player() {
   const {id} = useParams<{id: string}>();
-  const film = films.find((film) => film.id === id) || films[0];
+  const film = films.find((fi) => fi.id === id) || films[0];
 
   return (
     <div className='player'>
@@ -15,11 +15,7 @@ function Player() {
       >
 
       </video>
-
-      {/* <button type='button' className='player__exit'>
-        Exit
-      </button> */}
-      <Link to = {`/`} className='player__exit'>Exit</Link>
+      <Link to = {'/'} className='player__exit'>Exit</Link>
 
       <div className='player__controls'>
         <div className='player__controls-row'>

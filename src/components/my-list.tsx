@@ -1,5 +1,5 @@
-import { films } from "../mocks/films";
-import MoviesList from "./movies";
+import { films } from '../mocks/films';
+import MoviesList from './movies';
 
 function MyList() {
   return (
@@ -13,23 +13,32 @@ function MyList() {
           </a>
         </div>
 
-        <h1 className='page-title user-page__title'>My list <span className='user-page__film-count'>9</span></h1>
+        <h1 className='page-title user-page__title'>
+          My list <span className='user-page__film-count'>9</span>
+        </h1>
         <ul className='user-block'>
           <li className='user-block__item'>
             <div className='user-block__avatar'>
-              <img src='/img/avatar.jpg' alt='User avatar' width='63' height='63' />
+              <img
+                src='/img/avatar.jpg'
+                alt='User avatar'
+                width='63'
+                height='63'
+              />
             </div>
           </li>
           <li className='user-block__item'>
-            <a className='user-block__link' href='#'>Sign out</a>
+            <a className='user-block__link' href='#'>
+              Sign out
+            </a>
           </li>
         </ul>
       </header>
 
-      <section className="catalog">
-        <h2 className="catalog__title visually-hidden">Catalog</h2>
+      <section className='catalog'>
+        <h2 className='catalog__title visually-hidden'>Catalog</h2>
         <MoviesList films={films.slice(1, 4)} />
-         </section>
+      </section>
 
       <footer className='page-footer'>
         <div className='logo'>
