@@ -1,17 +1,25 @@
+import { Link, useParams } from "react-router-dom";
+import { films } from "../mocks/films";
+
+
 function Player() {
+  const {id} = useParams<{id: string}>();
+  const film = films.find((film) => film.id === id) || films[0];
+
   return (
     <div className='player'>
       <video
-        src='#'
+        src={film.trailer}
         className='player__video'
-        poster='/img/player-poster.jpg'
+        poster={film.previewSrc}
       >
 
       </video>
 
-      <button type='button' className='player__exit'>
+      {/* <button type='button' className='player__exit'>
         Exit
-      </button>
+      </button> */}
+      <Link to = {`/`} className='player__exit'>Exit</Link>
 
       <div className='player__controls'>
         <div className='player__controls-row'>
