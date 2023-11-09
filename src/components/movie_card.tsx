@@ -1,19 +1,39 @@
-import React from 'react';
+/* eslint-disable react/no-unused-prop-types */
 
-type MovieCardProps = {
-  src: string;
-  name: string;
-}
+import { Link } from 'react-router-dom';
 
+export type MovieCardProps = {
+  id: string;
+  releaseDate?: string;
+  genre?: string;
+  trailer?: string;
+  title: string;
+  previewSrc: string;
+  description?: string;
+  onMouseEnter?: () => void;
+  onMouseLeft?: () => void;
+};
 
-function MovieCard({ src, name }: MovieCardProps) {
+function MovieCard({
+  id,
+  previewSrc,
+  title,
+  onMouseEnter,
+  onMouseLeft,
+}: MovieCardProps) {
   return (
-    <article className='small-film-card catalog__films-card'>
+    <article
+      className='small-film-card catalog__films-card'
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeft}
+    >
       <div className='small-film-card__image'>
-        <img src={src} alt={name} width='280' height='175' />
+        <img src={previewSrc} alt={title} width='280' height='175' />
       </div>
       <h3 className='small-film-card__title'>
-        <a className='small-film-card__link' href='film-page.html'>{name}</a>
+        <Link to={`/films/${id}`} className='small-film-card__link'>
+          {title || ''}
+        </Link>
       </h3>
     </article>
   );

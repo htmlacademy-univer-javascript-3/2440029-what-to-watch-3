@@ -18,7 +18,7 @@ type ProtectedWrapperProps = {
 
 export const ProtectedWrapper = ({ children }: ProtectedWrapperProps) => {
   const navigate = useNavigate();
-  const isAuthorized = false;
+  const isAuthorized = true;
 
   useEffect(() => {
     if (!isAuthorized) {
