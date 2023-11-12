@@ -16,7 +16,7 @@ type ProtectedWrapperProps = {
   children: React.ReactNode;
 };
 
-export const ProtectedWrapper = ({ children }: ProtectedWrapperProps) => {
+export const ProtectedWrapper: React.FC<ProtectedWrapperProps> = ({ children }) => {
   const navigate = useNavigate();
   const isAuthorized = true;
 
@@ -26,7 +26,11 @@ export const ProtectedWrapper = ({ children }: ProtectedWrapperProps) => {
     }
   }, [isAuthorized, navigate]);
 
-  return isAuthorized ? children : null;
+  if (!isAuthorized) {
+    return null;
+  }
+
+  return children as React.ReactElement | null;
 };
 
 ProtectedWrapper.propTypes = {
