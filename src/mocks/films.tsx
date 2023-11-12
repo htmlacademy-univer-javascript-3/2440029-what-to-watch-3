@@ -9,8 +9,7 @@ export const films: MovieCardProps[] = [
       'The second installment of the \'Fantastic Beasts\' series featuring the adventures of Magizoologist Newt Scamander.',
     releaseDate: '2018-11-16',
     genre: 'Fantasy',
-    trailer:
-      'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    trailer:'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
   },
   {
     id: '2',
@@ -32,7 +31,7 @@ export const films: MovieCardProps[] = [
     releaseDate: '2015-10-02',
     genre: 'Drama, History, War',
     trailer:
-      'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
   },
   {
     id: '4',
