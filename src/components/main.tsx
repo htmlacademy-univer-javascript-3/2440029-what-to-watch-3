@@ -1,20 +1,28 @@
 import MoviesList from './movies';
 import PromoFilm from './promo-film';
 import Genres from './genre';
-import { MovieCardProps } from './movie-card';
 import Footer from './footer';
+import { useDispatch, useSelector } from 'react-redux';
+import { InitialState } from '../store/state';
+import { useEffect } from 'react';
+import { getMoviesByGenre } from '../store/action';
 
 type MainPageProps = {
   promoFilmTitle: string;
   promoFilmGenre: string;
   promoFilmReleaseDate: string;
-  films: MovieCardProps[];
 }
 
-const genres = ['All genres', 'Comedies', 'Crime', 'Documentary', 'Dramas', 'Horror', 'Kids & Family', 'Romance', 'Sci-Fi', 'Thrillers'];
+
+function MainPage({ promoFilmTitle, promoFilmGenre, promoFilmReleaseDate }: MainPageProps) {
+  const dispatch = useDispatch();
+  const { genre, films } = useSelector((state: InitialState) => state.films);
+
+  useEffect(() => {
+    dispatch(getMoviesByGenre(genre));
+  }, [genre, dispatch]);
 
 
-function MainPage({ promoFilmTitle, promoFilmGenre, promoFilmReleaseDate, films }: MainPageProps) {
   return (
     <>
       <PromoFilm
@@ -31,10 +39,7 @@ function MainPage({ promoFilmTitle, promoFilmGenre, promoFilmReleaseDate, films 
         <section className='catalog'>
           <h2 className='catalog__title visually-hidden'>Catalog</h2>
 
-          <Genres
-            genres={genres}
-            active='All genres'
-          />
+          <Genres />
 
           <MoviesList films={films} />
 
