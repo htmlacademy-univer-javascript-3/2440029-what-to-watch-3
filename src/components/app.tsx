@@ -6,7 +6,7 @@ import MyList from './my-list';
 import Film from './film';
 import AddReview from './add-review';
 import Player from './player';
-import { MovieCardProps } from './movie_card';
+import { MovieCardProps } from './movie-card';
 
 type AppProps = {
   promoTitle: string;

@@ -32,8 +32,8 @@ const VideoPlayer: React.FC<Props> = ({ videoSource, poster, autoplay }) => {
   return (
     <video
       ref={videoElementRef}
-      width="280"
-      height="175"
+      width='280'
+      height='175'
       src={videoSource}
       poster={poster}
       muted
