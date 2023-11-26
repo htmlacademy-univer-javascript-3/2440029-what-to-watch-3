@@ -1,4 +1,47 @@
-import { MovieCardProps } from '../components/movie_card';
+import { MovieCardProps, Review } from '../components/movie-card';
+
+const reviews: Review[] = [
+  {
+    reviewText:
+      'Have a lot of appreciation for Queen. Not a favourite band of mine by all means, but it is difficult to not understand their importance and appeal. They had some iconic songs (namely Bohemian Rhapsody, We Will Rock You, We Are the Champions and Don\'t Stop Me Now) and Freddie Mercury s immediately recognisable vocals and Brian May\'s virtuosic guitar playing were always out of this world.',
+    reviewAuthor: 'Gimly',
+    reviewDate: '2019-03-08T14:13:56.569Z',
+    reviewFormattedDate: 'March 8, 2019',
+    reviewRating: 8.0,
+  },
+  {
+    reviewText:
+      'A wonderful cast and a story that is both heartwarming and heartbreaking, this is a must see for any fan of Queen.',
+    reviewAuthor: 'Gimly',
+    reviewDate: '2019-03-08T14:13:56.569Z',
+    reviewFormattedDate: 'March 8, 2019',
+    reviewRating: 8.0,
+  },
+  {
+    reviewText:
+      'A wonderful cast and a story that is both heartwarming and heartbreaking, this is a must see for any fan of Queen.',
+    reviewAuthor: 'Gimly',
+    reviewDate: '2019-03-08T14:13:56.569Z',
+    reviewFormattedDate: 'March 8, 2019',
+    reviewRating: 8.0,
+  },
+  {
+    reviewText:
+      'A wonderful cast and a story that is both heartwarming and heartbreaking, this is a must see for any fan of Queen.',
+    reviewAuthor: 'Gimly',
+    reviewDate: '2019-03-08T14:13:56.569Z',
+    reviewFormattedDate: 'March 8, 2019',
+    reviewRating: 8.0,
+  },
+  {
+    reviewText:
+      'A wonderful cast and a story that is both heartwarming and heartbreaking, this is a must see for any fan of Queen.',
+    reviewAuthor: 'Gimly',
+    reviewDate: '2019-03-08T14:13:56.569Z',
+    reviewFormattedDate: 'March 8, 2019',
+    reviewRating: 8.0,
+  },
+];
 
 export const films: MovieCardProps[] = [
   {
@@ -9,7 +52,15 @@ export const films: MovieCardProps[] = [
       'The second installment of the \'Fantastic Beasts\' series featuring the adventures of Magizoologist Newt Scamander.',
     releaseDate: '2018-11-16',
     genre: 'Fantasy',
-    trailer:'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
+    trailer:
+      'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
+    director: 'David Yates',
+    rating: 6.6,
+    ratingLevel: 'Very good',
+    ratingsCount: 240,
+    starring: ['Eddie Redmayne', 'Katherine Waterston', 'Dan Fogler'],
+    reviews: reviews,
+    runtime: 111,
   },
   {
     id: '2',
@@ -18,9 +69,16 @@ export const films: MovieCardProps[] = [
     description:
       'The story of the legendary British rock band Queen and lead singer Freddie Mercury, leading up to their famous performance at Live Aid.',
     releaseDate: '2018-10-24',
-    genre: 'Biography, Drama, Music',
+    genre: 'Drama',
     trailer:
       'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
+    director: 'David Yates',
+    rating: 6.6,
+    ratingLevel: 'Very good',
+    ratingsCount: 240,
+    starring: ['Eddie Redmayne', 'Katherine Waterston', 'Dan Fogler'],
+    reviews: reviews,
+    runtime: 121,
   },
   {
     id: '3',
@@ -29,9 +87,16 @@ export const films: MovieCardProps[] = [
     description:
       'Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will become King of Scotland.',
     releaseDate: '2015-10-02',
-    genre: 'Drama, History, War',
+    genre: 'Drama',
     trailer:
-    'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
+      'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
+    director: 'David Yates',
+    rating: 6.6,
+    ratingLevel: 'Very good',
+    ratingsCount: 240,
+    starring: ['Eddie Redmayne', 'Katherine Waterston', 'Dan Fogler'],
+    reviews: reviews,
+    runtime: 113,
   },
   {
     id: '4',
@@ -40,9 +105,16 @@ export const films: MovieCardProps[] = [
     description:
       'A biopic depicting the early years of legendary Director and aviator Howard Hughes\' career.',
     releaseDate: '2004-12-25',
-    genre: 'Biography, Drama',
+    genre: 'Drama',
     trailer:
       'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
+    director: 'David Yates',
+    rating: 6.6,
+    ratingLevel: 'Very good',
+    ratingsCount: 240,
+    starring: ['Eddie Redmayne', 'Katherine Waterston', 'Dan Fogler'],
+    reviews: reviews,
+    runtime: 170,
   },
   {
     id: '5',
@@ -51,9 +123,16 @@ export const films: MovieCardProps[] = [
     description:
       'Kevin\'s mother struggles to love her strange child, despite the increasingly dangerous things he says and does.',
     releaseDate: '2011-09-28',
-    genre: 'Drama, Thriller',
+    genre: 'Thriller',
     trailer:
       'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    director: 'David Yates',
+    rating: 6.6,
+    ratingLevel: 'Very good',
+    ratingsCount: 240,
+    starring: ['Eddie Redmayne', 'Katherine Waterston', 'Dan Fogler'],
+    reviews: reviews,
+    runtime: 170,
   },
   {
     id: '6',
@@ -62,9 +141,16 @@ export const films: MovieCardProps[] = [
     description:
       'Viago, Deacon, and Vladislav are vampires who are finding that modern life has them struggling with the mundane - like paying rent, keeping up with the chore wheel, and trying to get into nightclubs.',
     releaseDate: '2014-06-19',
-    genre: 'Comedy, Horror',
+    genre: 'Horror',
     trailer:
       'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
+    director: 'David Yates',
+    rating: 6.6,
+    ratingLevel: 'Very good',
+    ratingsCount: 240,
+    starring: ['Eddie Redmayne', 'Katherine Waterston', 'Dan Fogler'],
+    reviews: reviews,
+    runtime: 170,
   },
   {
     id: '7',
@@ -73,9 +159,16 @@ export const films: MovieCardProps[] = [
     description:
       'A frontiersman on a fur trading expedition in the 1820s fights for survival after being mauled by a bear and left for dead by members of his own hunting team.',
     releaseDate: '2015-12-25',
-    genre: 'Action, Adventure, Drama',
+    genre: 'Action',
     trailer:
       'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    director: 'David Yates',
+    rating: 6.6,
+    ratingLevel: 'Very good',
+    ratingsCount: 240,
+    starring: ['Eddie Redmayne', 'Katherine Waterston', 'Dan Fogler'],
+    reviews: reviews,
+    runtime: 170,
   },
 
   {
@@ -85,8 +178,15 @@ export const films: MovieCardProps[] = [
     description:
       'After a sudden attack on MI5, Johnny English, Britain\'s most confident, yet unintelligent spy, becomes Britain\'s only spy.',
     releaseDate: '2003-04-06',
-    genre: 'Action, Adventure, Comedy',
+    genre: 'Action',
     trailer:
       'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
+    director: 'David Yates',
+    rating: 6.6,
+    ratingLevel: 'Very good',
+    ratingsCount: 240,
+    starring: ['Eddie Redmayne', 'Katherine Waterston', 'Dan Fogler'],
+    reviews: reviews,
+    runtime: 160,
   },
 ];

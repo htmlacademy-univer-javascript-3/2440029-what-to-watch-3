@@ -1,7 +1,7 @@
 import MoviesList from './movies';
 import PromoFilm from './promo-film';
 import Genres from './genre';
-import { MovieCardProps } from './movie_card';
+import { MovieCardProps } from './movie-card';
 import Footer from './footer';
 
 type MainPageProps = {

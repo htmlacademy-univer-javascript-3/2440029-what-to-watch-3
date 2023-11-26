@@ -12,9 +12,24 @@ export type MovieCardProps = {
   title: string;
   previewSrc: string;
   description?: string;
+  director?: string;
+  rating?: number;
+  ratingLevel?: string;
+  ratingsCount?: number;
+  starring?: string[];
+  reviews: Review[];
+  runtime?: number;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
 };
+
+export type Review = {
+  reviewText: string;
+  reviewAuthor: string;
+  reviewDate: string;
+  reviewFormattedDate: string;
+  reviewRating: number;
+}
 
 function MovieCard({
   id,
