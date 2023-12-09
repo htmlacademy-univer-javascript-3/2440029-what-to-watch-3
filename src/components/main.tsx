@@ -5,8 +5,12 @@ import Footer from './footer';
 import { useDispatch, useSelector } from 'react-redux';
 import { InitialState } from '../store/state';
 import { useEffect } from 'react';
-import { getMoviesByGenre, showMore } from '../store/action';
+import { showMore, setMoviesByGenre } from '../store/action';
 import { ShowMore } from './show-more';
+import { FilmDispatch } from '../store';
+import { fetchMovies } from '../store/api-action';
+import { LoadingScreen } from '../pages/loading-screen';
+
 
 type MainPageProps = {
   promoFilmTitle: string;
@@ -16,12 +20,24 @@ type MainPageProps = {
 
 
 function MainPage({ promoFilmTitle, promoFilmGenre, promoFilmReleaseDate }: MainPageProps) {
-  const dispatch = useDispatch();
-  const { genre, films, displayedFilmsCount } = useSelector((state: InitialState) => state.films);
+  const dispatch = useDispatch<FilmDispatch>();
+  const { genre, allFilms, displayedFilmsCount, filteredFilms, isLoading } = useSelector((state: InitialState) => state.films);
 
   useEffect(() => {
-    dispatch(getMoviesByGenre(genre));
-  }, [genre, dispatch]);
+    dispatch(fetchMovies());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (genre === 'All genres') {
+      dispatch(setMoviesByGenre(allFilms));
+    } else {
+      dispatch(setMoviesByGenre(allFilms.filter((film) => film.genre === genre)));
+    }
+  }, [genre, allFilms, dispatch]);
+
+  if (isLoading) {
+    return LoadingScreen();
+  }
 
   const handleShowMoreClick = () => {
     dispatch(showMore());
@@ -45,11 +61,11 @@ function MainPage({ promoFilmTitle, promoFilmGenre, promoFilmReleaseDate }: Main
 
           <Genres />
 
-          <MoviesList films={films.slice(0, displayedFilmsCount)} />
+          <MoviesList films={filteredFilms.slice(0, displayedFilmsCount)} />
 
           <ShowMore
             onShowMoreClick={handleShowMoreClick}
-            visible={displayedFilmsCount < films.length}
+            visible={displayedFilmsCount < filteredFilms.length}
           />
         </section>
         <Footer />

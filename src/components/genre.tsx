@@ -5,7 +5,7 @@ import { InitialState } from '../store/state';
 export function Genres() {
   const dispatch = useDispatch();
   const films = useSelector((state: InitialState) => state.films);
-  const uniqueGenres = ['All genres', ...new Set(films.films.map((film) => film.genre))];
+  const uniqueGenres = ['All genres', ...new Set(films.allFilms.map((film) => film.genre))];
 
   const GenreItem = ({ genre }: { genre: string | undefined }) => {
     if (!genre) {

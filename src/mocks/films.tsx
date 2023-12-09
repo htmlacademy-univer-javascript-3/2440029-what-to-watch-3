@@ -1,47 +1,47 @@
-import { MovieCardProps, Review } from '../components/movie-card';
+import { MovieCardProps } from '../components/movie-card';
 
-const reviews: Review[] = [
-  {
-    reviewText:
-      'Have a lot of appreciation for Queen. Not a favourite band of mine by all means, but it is difficult to not understand their importance and appeal. They had some iconic songs (namely Bohemian Rhapsody, We Will Rock You, We Are the Champions and Don\'t Stop Me Now) and Freddie Mercury s immediately recognisable vocals and Brian May\'s virtuosic guitar playing were always out of this world.',
-    reviewAuthor: 'Gimly',
-    reviewDate: '2019-03-08T14:13:56.569Z',
-    reviewFormattedDate: 'March 8, 2019',
-    reviewRating: 8.0,
-  },
-  {
-    reviewText:
-      'A wonderful cast and a story that is both heartwarming and heartbreaking, this is a must see for any fan of Queen.',
-    reviewAuthor: 'Gimly',
-    reviewDate: '2019-03-08T14:13:56.569Z',
-    reviewFormattedDate: 'March 8, 2019',
-    reviewRating: 8.0,
-  },
-  {
-    reviewText:
-      'A wonderful cast and a story that is both heartwarming and heartbreaking, this is a must see for any fan of Queen.',
-    reviewAuthor: 'Gimly',
-    reviewDate: '2019-03-08T14:13:56.569Z',
-    reviewFormattedDate: 'March 8, 2019',
-    reviewRating: 8.0,
-  },
-  {
-    reviewText:
-      'A wonderful cast and a story that is both heartwarming and heartbreaking, this is a must see for any fan of Queen.',
-    reviewAuthor: 'Gimly',
-    reviewDate: '2019-03-08T14:13:56.569Z',
-    reviewFormattedDate: 'March 8, 2019',
-    reviewRating: 8.0,
-  },
-  {
-    reviewText:
-      'A wonderful cast and a story that is both heartwarming and heartbreaking, this is a must see for any fan of Queen.',
-    reviewAuthor: 'Gimly',
-    reviewDate: '2019-03-08T14:13:56.569Z',
-    reviewFormattedDate: 'March 8, 2019',
-    reviewRating: 8.0,
-  },
-];
+// const reviews: Review[] = [
+//   {
+//     reviewText:
+//       'Have a lot of appreciation for Queen. Not a favourite band of mine by all means, but it is difficult to not understand their importance and appeal. They had some iconic songs (namely Bohemian Rhapsody, We Will Rock You, We Are the Champions and Don\'t Stop Me Now) and Freddie Mercury s immediately recognisable vocals and Brian May\'s virtuosic guitar playing were always out of this world.',
+//     reviewAuthor: 'Gimly',
+//     reviewDate: '2019-03-08T14:13:56.569Z',
+//     reviewFormattedDate: 'March 8, 2019',
+//     reviewRating: 8.0,
+//   },
+//   {
+//     reviewText:
+//       'A wonderful cast and a story that is both heartwarming and heartbreaking, this is a must see for any fan of Queen.',
+//     reviewAuthor: 'Gimly',
+//     reviewDate: '2019-03-08T14:13:56.569Z',
+//     reviewFormattedDate: 'March 8, 2019',
+//     reviewRating: 8.0,
+//   },
+//   {
+//     reviewText:
+//       'A wonderful cast and a story that is both heartwarming and heartbreaking, this is a must see for any fan of Queen.',
+//     reviewAuthor: 'Gimly',
+//     reviewDate: '2019-03-08T14:13:56.569Z',
+//     reviewFormattedDate: 'March 8, 2019',
+//     reviewRating: 8.0,
+//   },
+//   {
+//     reviewText:
+//       'A wonderful cast and a story that is both heartwarming and heartbreaking, this is a must see for any fan of Queen.',
+//     reviewAuthor: 'Gimly',
+//     reviewDate: '2019-03-08T14:13:56.569Z',
+//     reviewFormattedDate: 'March 8, 2019',
+//     reviewRating: 8.0,
+//   },
+//   {
+//     reviewText:
+//       'A wonderful cast and a story that is both heartwarming and heartbreaking, this is a must see for any fan of Queen.',
+//     reviewAuthor: 'Gimly',
+//     reviewDate: '2019-03-08T14:13:56.569Z',
+//     reviewFormattedDate: 'March 8, 2019',
+//     reviewRating: 8.0,
+//   },
+// ];
 
 export const films: MovieCardProps[] = [
   {
@@ -54,13 +54,6 @@ export const films: MovieCardProps[] = [
     genre: 'Fantasy',
     trailer:
       'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
-    director: 'David Yates',
-    rating: 6.6,
-    ratingLevel: 'Very good',
-    ratingsCount: 240,
-    starring: ['Eddie Redmayne', 'Katherine Waterston', 'Dan Fogler'],
-    reviews: reviews,
-    runtime: 111,
   },
   {
     id: '2',
@@ -72,13 +65,6 @@ export const films: MovieCardProps[] = [
     genre: 'Drama',
     trailer:
       'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
-    director: 'David Yates',
-    rating: 6.6,
-    ratingLevel: 'Very good',
-    ratingsCount: 240,
-    starring: ['Eddie Redmayne', 'Katherine Waterston', 'Dan Fogler'],
-    reviews: reviews,
-    runtime: 121,
   },
   {
     id: '3',
@@ -90,13 +76,6 @@ export const films: MovieCardProps[] = [
     genre: 'Drama',
     trailer:
       'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
-    director: 'David Yates',
-    rating: 6.6,
-    ratingLevel: 'Very good',
-    ratingsCount: 240,
-    starring: ['Eddie Redmayne', 'Katherine Waterston', 'Dan Fogler'],
-    reviews: reviews,
-    runtime: 113,
   },
   {
     id: '4',
@@ -108,13 +87,6 @@ export const films: MovieCardProps[] = [
     genre: 'Drama',
     trailer:
       'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
-    director: 'David Yates',
-    rating: 6.6,
-    ratingLevel: 'Very good',
-    ratingsCount: 240,
-    starring: ['Eddie Redmayne', 'Katherine Waterston', 'Dan Fogler'],
-    reviews: reviews,
-    runtime: 170,
   },
   {
     id: '5',
@@ -126,13 +98,6 @@ export const films: MovieCardProps[] = [
     genre: 'Thriller',
     trailer:
       'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
-    director: 'David Yates',
-    rating: 6.6,
-    ratingLevel: 'Very good',
-    ratingsCount: 240,
-    starring: ['Eddie Redmayne', 'Katherine Waterston', 'Dan Fogler'],
-    reviews: reviews,
-    runtime: 170,
   },
   {
     id: '6',
@@ -144,13 +109,6 @@ export const films: MovieCardProps[] = [
     genre: 'Horror',
     trailer:
       'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
-    director: 'David Yates',
-    rating: 6.6,
-    ratingLevel: 'Very good',
-    ratingsCount: 240,
-    starring: ['Eddie Redmayne', 'Katherine Waterston', 'Dan Fogler'],
-    reviews: reviews,
-    runtime: 170,
   },
   {
     id: '7',
@@ -162,13 +120,6 @@ export const films: MovieCardProps[] = [
     genre: 'Action',
     trailer:
       'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
-    director: 'David Yates',
-    rating: 6.6,
-    ratingLevel: 'Very good',
-    ratingsCount: 240,
-    starring: ['Eddie Redmayne', 'Katherine Waterston', 'Dan Fogler'],
-    reviews: reviews,
-    runtime: 170,
   },
 
   {
@@ -181,12 +132,5 @@ export const films: MovieCardProps[] = [
     genre: 'Action',
     trailer:
       'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
-    director: 'David Yates',
-    rating: 6.6,
-    ratingLevel: 'Very good',
-    ratingsCount: 240,
-    starring: ['Eddie Redmayne', 'Katherine Waterston', 'Dan Fogler'],
-    reviews: reviews,
-    runtime: 160,
   },
 ];

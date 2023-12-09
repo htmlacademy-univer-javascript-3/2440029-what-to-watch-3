@@ -2,8 +2,8 @@ import React from 'react';
 import Footer from './footer';
 import { MovieCardProps } from './movie-card';
 import { Link, useParams } from 'react-router-dom';
-import Tabs from './tabs/tabs';
-import MoviesList from './movies';
+// import Tabs from './tabs/tabs';
+// import MoviesList from './movies';
 
 
 function Film({ films: films }: { films: MovieCardProps[] }) {
@@ -12,7 +12,7 @@ function Film({ films: films }: { films: MovieCardProps[] }) {
   if (!film) {
     return <div>film not found</div>;
   }
-  const similarFilms = films.filter((_film) => _film.id !== film.id && _film.genre === film.genre);
+  // const similarFilms = films.filter((_film) => _film.id !== film.id && _film.genre === film.genre);
 
   return (
     <React.Fragment>
@@ -102,7 +102,7 @@ function Film({ films: films }: { films: MovieCardProps[] }) {
             </div>
 
             <div className='film-card__desc'>
-              <Tabs film={film} />
+              {/* <Tabs film={film} /> */}
             </div>
           </div>
         </div>
@@ -111,7 +111,7 @@ function Film({ films: films }: { films: MovieCardProps[] }) {
       <div className='page-content'>
         <section className='catalog catalog--like-this'>
           <h2 className='catalog__title'>More like this</h2>
-          <MoviesList films={similarFilms} />
+          {/* <MoviesList films={similarFilms} /> */}
         </section>
 
         <Footer />
