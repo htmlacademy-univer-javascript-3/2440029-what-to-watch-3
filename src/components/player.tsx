@@ -1,17 +1,22 @@
 import { Link, useParams } from 'react-router-dom';
-import { films } from '../mocks/films';
+import { FilmShortInfo } from '../types/films';
 
 
-function Player() {
+type PlayerProps = {
+  films: FilmShortInfo[];
+};
+
+
+function Player({films} : PlayerProps) {
   const {id} = useParams<{id: string}>();
   const film = films.find((fi) => fi.id === id) || films[0];
 
   return (
     <div className='player'>
       <video
-        src={film.trailer}
+        src={film.previewVideoLink}
         className='player__video'
-        poster={film.previewSrc}
+        poster={film.previewImage}
       >
 
       </video>
@@ -40,7 +45,7 @@ function Player() {
             </svg>
             <span>Play</span>
           </button>
-          <div className='player__name'>Transpotting</div>
+          <div className='player__name'>{film.name}</div>
 
           <button type='button' className='player__full-screen'>
             <svg viewBox='0 0 27 27' width='27' height='27'>

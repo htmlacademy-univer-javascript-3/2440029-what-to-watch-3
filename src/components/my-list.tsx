@@ -1,5 +1,6 @@
-import { films } from '../mocks/films';
-import MoviesList from './movies';
+// import { films } from '../mocks/films';
+// import MoviesList from './movies';
+
 
 function MyList() {
   return (
@@ -37,7 +38,7 @@ function MyList() {
 
       <section className='catalog'>
         <h2 className='catalog__title visually-hidden'>Catalog</h2>
-        <MoviesList films={films.slice(1, 4)} />
+        {/* <MoviesList films={films.slice(1, 4)} /> */}
       </section>
 
       <footer className='page-footer'>

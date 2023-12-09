@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app';
-import { films } from './mocks/films';
 import { Provider } from 'react-redux';
 import {Store} from './store/';
 
@@ -22,7 +21,7 @@ root.render(
         promoTitle={promoFilm.promoTitle}
         promoGenre={promoFilm.promoGenre}
         promoReleaseDate={promoFilm.promoReleaseDate}
-        films={films}
+        // films={films}
       />
     </Provider>
   </React.StrictMode>

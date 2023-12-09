@@ -1,17 +1,18 @@
-import { MovieCardProps } from './movie-card';
+// import { MovieCardProps } from './movie-card';
+import { FilmShortInfo } from '../types/films';
 
 import MovieCard from './movie-card';
 
 type MovieListProps = {
-  films: MovieCardProps[];
+  films: FilmShortInfo[];
 }
 
 function MoviesList({films}: MovieListProps) {
 
   return (
     <div className='catalog__films-list'>
-      {films.map((film: MovieCardProps) => (
-        <MovieCard key={film.id} previewSrc={film.previewSrc} title={film.title} id={film.id} releaseDate={film.releaseDate} trailer={film.trailer} reviews={film.reviews}/>
+      {films.map((film: FilmShortInfo) => (
+        <MovieCard key={film.id} previewSrc={film.previewImage} title={film.name} id={film.id} trailer={film.previewVideoLink} />
       ))}
     </div>
   );
