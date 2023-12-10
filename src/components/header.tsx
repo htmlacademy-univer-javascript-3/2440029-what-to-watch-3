@@ -5,7 +5,7 @@ import { AuthStatus } from '../types/auth';
 import { InitialState } from '../store/state';
 import { FilmDispatch } from '../store';
 
-export function Header() {
+export function Header({children}: {children?: React.ReactNode}) {
   const dispatch = useDispatch<FilmDispatch>();
   const { authStatus, authedUserInfo } = useSelector((state: InitialState) => state.films);
   const navigate = useNavigate();
@@ -51,6 +51,7 @@ export function Header() {
           <span className='logo__letter logo__letter--3'>W</span>
         </a>
       </div>
+      {children}
       <ul className='user-block'>
         {renderUserBlock()}
       </ul>

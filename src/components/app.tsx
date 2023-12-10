@@ -3,10 +3,9 @@ import MainPage from './main';
 import NotFoundPage, { ProtectedWrapper } from './not-found-page';
 import SignInForm from './login/sign-in';
 import MyList from './my-list';
-// import Film from './film';
-// import AddReview from './add-review';
+import Film from './film';
+import AddReview from './add-review';
 // import Player from './player';
-// import { MovieCardProps } from './movie-card';
 
 type AppProps = {
   promoTitle: string;
@@ -29,9 +28,9 @@ function App(props: AppProps) {
           />
           <Route path='/login' element={<SignInForm />} />
           <Route path='/mylist' element={<ProtectedWrapper><MyList /></ProtectedWrapper>} />
-          {/* <Route path='/films/:id' element={<Film films={props.films} />} /> */}
-          {/* <Route path='/films/:id/review' element={<AddReview />} />
-          <Route path='/player/:id' element={<Player />} /> */}
+          <Route path='/films/:id' element={<Film />} />
+          <Route path='/films/:id/review' element={<AddReview />} />
+          {/* <Route path='/player/:id' element={<Player />} /> */}
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
 
