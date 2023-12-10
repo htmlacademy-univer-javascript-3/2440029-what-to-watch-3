@@ -1,61 +1,71 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import React from 'react';
 import Footer from './footer';
-import { MovieCardProps } from './movie-card';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-// import Tabs from './tabs/tabs';
-// import MoviesList from './movies';
+import { LoadingScreen } from '../pages/loading-screen';
+import { FilmDispatch } from '../store';
+import { InitialState } from '../store/state';
+import { FilmShortInfo } from '../types/films';
+import { fetchFilmById, fetchSimilarFilms } from '../store/api-action';
+import NotFoundPage from './not-found-page';
+import Tabs from './tabs/tabs';
+import MoviesList from './movies';
+import { Header } from './header';
+import { AuthStatus } from '../types/auth';
 
+function Film() {
+  const { id } = useParams<{id: string}>();
+  const dispatch = useDispatch<FilmDispatch>();
+  const film = useSelector((state: InitialState) => state.films.currentFilm);
+  const isLoading = useSelector((state: InitialState) => state.films.isLoading);
+  const errorMsg = useSelector((state: InitialState) => state.films.errorMsg);
+  const authStatus = useSelector((state: InitialState) => state.films.authStatus);
+  const [similarFilms, setSimilarFilms] = useState<FilmShortInfo[]>([]);
 
-function Film({ films: films }: { films: MovieCardProps[] }) {
-  const { id } = useParams<{ id: string }>();
-  const film = films.find((_film) => _film.id === id);
-  if (!film) {
-    return <div>film not found</div>;
+  useEffect(() => {
+    dispatch(fetchFilmById(id as string));
+    dispatch(fetchSimilarFilms(id as string))
+      .unwrap()
+      .then((data) => {
+        setSimilarFilms(data);
+      })
+      .catch((err) => localStorage.setItem('error', err));
+
+  }, [dispatch, id]);
+
+  if (isLoading) {
+    return <LoadingScreen />;
   }
-  // const similarFilms = films.filter((_film) => _film.id !== film.id && _film.genre === film.genre);
+
+  if (errorMsg) {
+    return <div>Something went wrong {errorMsg}</div>;
+  }
+
+  if (!film) {
+    return <NotFoundPage />;
+  }
+
 
   return (
     <React.Fragment>
       <section className='film-card film-card--full'>
         <div className='film-card__hero'>
           <div className='film-card__bg'>
-            <img src={film.previewSrc} alt={film.title} />
+            <img src={film.backgroundImage} alt={film.name} />
           </div>
 
           <h1 className='visually-hidden'>WTW</h1>
 
-          <header className='page-header film-card__head'>
-            <div className='logo'>
-              <a href='#' className='logo__link'>
-                <span className='logo__letter logo__letter--1'>W</span>
-                <span className='logo__letter logo__letter--2'>T</span>
-                <span className='logo__letter logo__letter--3'>W</span>
-              </a>
-            </div>
-
-            <ul className='user-block'>
-              <li className='user-block__item'>
-                <div className='user-block__avatar'>
-                  <img
-                    src='/img/avatar.jpg'
-                    alt='User avatar'
-                    width='63'
-                    height='63'
-                  />
-                </div>
-              </li>
-              <li className='user-block__item'>
-                <a className='user-block__link'>Sign out</a>
-              </li>
-            </ul>
-          </header>
+          <Header />
 
           <div className='film-card__wrap'>
             <div className='film-card__desc'>
-              <h2 className='film-card__title'>{film.title}</h2>
+              <h2 className='film-card__title'>{film.name}</h2>
               <p className='film-card__meta'>
                 <span className='film-card__genre'>{film.genre}</span>
-                <span className='film-card__year'>{film.releaseDate}</span>
+                <span className='film-card__year'>{film.released}</span>
               </p>
 
               <div className='film-card__buttons'>
@@ -79,9 +89,11 @@ function Film({ films: films }: { films: MovieCardProps[] }) {
                   <span>My list</span>
                   <span className='film-card__count'>3</span>
                 </Link>
+
                 <Link
                   to={`/films/${film.id}/review`}
                   className='btn film-card__button'
+                  style={{ display: authStatus === AuthStatus.AUTHENTICATED ? 'block' : 'none' }}
                 >
                   Add review
                 </Link>
@@ -94,15 +106,15 @@ function Film({ films: films }: { films: MovieCardProps[] }) {
           <div className='film-card__info'>
             <div className='film-card__poster film-card__poster--big'>
               <img
-                src={film.previewSrc}
-                alt={film.title}
+                src={film.posterImage}
+                alt={film.name}
                 width='218'
                 height='327'
               />
             </div>
 
             <div className='film-card__desc'>
-              {/* <Tabs film={film} /> */}
+              <Tabs film={film} />
             </div>
           </div>
         </div>
@@ -111,7 +123,7 @@ function Film({ films: films }: { films: MovieCardProps[] }) {
       <div className='page-content'>
         <section className='catalog catalog--like-this'>
           <h2 className='catalog__title'>More like this</h2>
-          {/* <MoviesList films={similarFilms} /> */}
+          <MoviesList films={similarFilms} />
         </section>
 
         <Footer />

@@ -1,8 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { getMoviesByGenre, setGenre, showMore, setMoviesByGenre, setAuthStatus } from './action';
 
-import { FilmShortInfo } from '../types/films';
-import { fetchMovies, checkAuthorization, login, logout } from './api-action';
+import { FilmShortInfo, FilmFullInfo } from '../types/films';
+import { fetchMovies, checkAuthorization, login, logout, fetchFilmById } from './api-action';
 
 import { AuthStatus, AuthResponse } from '../types/auth';
 
@@ -19,6 +19,7 @@ export interface FilmsState {
   errorMsg: string | null;
   authStatus: AuthStatus;
   authedUserInfo: AuthResponse | null;
+  currentFilm: FilmFullInfo | null;
 }
 
 
@@ -31,6 +32,7 @@ export const RootState: FilmsState = {
   errorMsg: null,
   authStatus: AuthStatus.NOT_AUTHENTICATED,
   authedUserInfo: null,
+  currentFilm: null,
 };
 
 
@@ -77,7 +79,6 @@ export const filmsReducer = createReducer(RootState, (builder) => {
   });
   builder.addCase(checkAuthorization.rejected, (state) => {
     state.authStatus = AuthStatus.NOT_AUTHENTICATED;
-    state.authedUserInfo = null;
   });
   builder.addCase(login.pending, (state) => {
     state.authStatus = AuthStatus.PENDING;
@@ -88,11 +89,22 @@ export const filmsReducer = createReducer(RootState, (builder) => {
   });
   builder.addCase(login.rejected, (state) => {
     state.authStatus = AuthStatus.NOT_AUTHENTICATED;
-    state.authedUserInfo = null;
   });
   builder.addCase(logout.fulfilled, (state) => {
     state.authStatus = AuthStatus.NOT_AUTHENTICATED;
     state.authedUserInfo = null;
+  });
+  builder.addCase(fetchFilmById.pending, (state) => {
+    state.isLoading = true;
+  });
+  builder.addCase(fetchFilmById.fulfilled, (state, action) => {
+    state.currentFilm = action.payload;
+    state.isLoading = false;
+  });
+  builder.addCase(fetchFilmById.rejected, (state, action) => {
+    state.isLoading = false;
+    state.currentFilm = null;
+    state.errorMsg = action.error.message || 'Failed to load movie description';
   });
 });
 

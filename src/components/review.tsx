@@ -1,5 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import {useParams} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { FilmDispatch } from '../store';
+import { postReview } from '../store/api-action';
+import { useNavigate } from 'react-router-dom';
 
 const RatingStars = ({
   rating,
@@ -47,10 +52,24 @@ const ReviewTextarea = ({
 
 const ReviewForm = () => {
   const [rating, setRating] = useState(8);
-  const [reviewText, setReviewText] = useState('');
+  const {id} = useParams<{id: string}>();
+  const [comment, setComment] = useState('');
+  const dispatch = useDispatch<FilmDispatch>();
+  const navigate = useNavigate();
+  const isCommentValid = comment.length > 50 && comment.length < 400;
 
-  const handleSubmit = (event: { preventDefault: () => void }) => {
-    event.preventDefault();
+  const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+    if (!id || !isCommentValid) {
+      return;
+    }
+
+    dispatch(postReview({id, rating, comment}))
+      .unwrap()
+      .then(() => {
+        navigate(`/films/${id}`);
+      })
+      .catch((err) => localStorage.setItem('error', err));
   };
 
   return (
@@ -59,11 +78,9 @@ const ReviewForm = () => {
         <RatingStars rating={rating} setRating={setRating} />
       </div>
       <div className='add-review__text'>
-        <ReviewTextarea reviewText={reviewText} setReviewText={setReviewText} />
+        <ReviewTextarea reviewText={comment} setReviewText={setComment} />
         <div className='add-review__submit'>
-          <Link to={'/'} className='btn film-card__button'>
-            Post
-          </Link>
+          <button className="add-review__btn" type="submit" disabled={!isCommentValid}>Post</button>
         </div>
       </div>
     </form>
