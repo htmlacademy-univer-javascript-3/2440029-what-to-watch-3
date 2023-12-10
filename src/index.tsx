@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app';
 import { Provider } from 'react-redux';
-import {Store} from './store/';
+import { Store } from './store/';
+import { checkAuthorization } from './store/api-action';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -14,6 +15,8 @@ const promoFilm = {
   promoReleaseDate: '2014',
 };
 
+Store.dispatch(checkAuthorization());
+
 root.render(
   <React.StrictMode>
     <Provider store={Store}>
@@ -21,7 +24,6 @@ root.render(
         promoTitle={promoFilm.promoTitle}
         promoGenre={promoFilm.promoGenre}
         promoReleaseDate={promoFilm.promoReleaseDate}
-        // films={films}
       />
     </Provider>
   </React.StrictMode>
