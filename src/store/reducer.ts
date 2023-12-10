@@ -1,8 +1,10 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { getMoviesByGenre, setGenre, showMore, setMoviesByGenre } from './action';
+import { getMoviesByGenre, setGenre, showMore, setMoviesByGenre, setAuthStatus } from './action';
 
 import { FilmShortInfo } from '../types/films';
-import { fetchMovies } from './api-action';
+import { fetchMovies, checkAuthorization, login, logout } from './api-action';
+
+import { AuthStatus, AuthResponse } from '../types/auth';
 
 
 export const SHOWING_FILMS_COUNT = 8;
@@ -15,6 +17,8 @@ export interface FilmsState {
   filteredFilms: FilmShortInfo[];
   isLoading: boolean;
   errorMsg: string | null;
+  authStatus: AuthStatus;
+  authedUserInfo: AuthResponse | null;
 }
 
 
@@ -25,6 +29,8 @@ export const RootState: FilmsState = {
   filteredFilms: [],
   isLoading: false,
   errorMsg: null,
+  authStatus: AuthStatus.NOT_AUTHENTICATED,
+  authedUserInfo: null,
 };
 
 
@@ -58,6 +64,35 @@ export const filmsReducer = createReducer(RootState, (builder) => {
   builder.addCase(fetchMovies.rejected, (state, action) => {
     state.isLoading = false;
     state.errorMsg = action.error.message || 'Failed to load movies';
+  });
+  builder.addCase(setAuthStatus, (state, action) => {
+    state.authStatus = action.payload;
+  });
+  builder.addCase(checkAuthorization.pending, (state) => {
+    state.authStatus = AuthStatus.PENDING;
+  });
+  builder.addCase(checkAuthorization.fulfilled, (state, action) => {
+    state.authStatus = action.payload.isAuthorized ? AuthStatus.AUTHENTICATED : AuthStatus.NOT_AUTHENTICATED;
+    state.authedUserInfo = action.payload.content || null;
+  });
+  builder.addCase(checkAuthorization.rejected, (state) => {
+    state.authStatus = AuthStatus.NOT_AUTHENTICATED;
+    state.authedUserInfo = null;
+  });
+  builder.addCase(login.pending, (state) => {
+    state.authStatus = AuthStatus.PENDING;
+  });
+  builder.addCase(login.fulfilled, (state, action) => {
+    state.authStatus = AuthStatus.AUTHENTICATED;
+    state.authedUserInfo = action.payload;
+  });
+  builder.addCase(login.rejected, (state) => {
+    state.authStatus = AuthStatus.NOT_AUTHENTICATED;
+    state.authedUserInfo = null;
+  });
+  builder.addCase(logout.fulfilled, (state) => {
+    state.authStatus = AuthStatus.NOT_AUTHENTICATED;
+    state.authedUserInfo = null;
   });
 });
 
