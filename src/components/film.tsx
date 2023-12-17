@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { LoadingScreen } from '../pages/loading-screen';
 import { FilmDispatch } from '../store';
-import { InitialState } from '../store/state';
+import { InitialState } from '../store/reducer';
 import { FilmShortInfo } from '../types/films';
 import { fetchFilmById, fetchSimilarFilms } from '../store/api-action';
 import NotFoundPage from './not-found-page';
@@ -18,10 +18,10 @@ import { AuthStatus } from '../types/auth';
 function Film() {
   const { id } = useParams<{id: string}>();
   const dispatch = useDispatch<FilmDispatch>();
-  const film = useSelector((state: InitialState) => state.films.currentFilm);
-  const isLoading = useSelector((state: InitialState) => state.films.isLoading);
-  const errorMsg = useSelector((state: InitialState) => state.films.errorMsg);
-  const authStatus = useSelector((state: InitialState) => state.films.authStatus);
+  const film = useSelector((state: InitialState) => state.filmsData.currentFilm);
+  const isLoading = useSelector((state: InitialState) => state.filmsData.isLoading);
+  const errorMsg = useSelector((state: InitialState) => state.filmsData.errorMsg);
+  const authStatus = useSelector((state: InitialState) => state.auth.authStatus);
   const [similarFilms, setSimilarFilms] = useState<FilmShortInfo[]>([]);
 
   useEffect(() => {

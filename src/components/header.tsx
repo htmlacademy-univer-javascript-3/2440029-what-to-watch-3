@@ -2,12 +2,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { logout } from '../store/api-action';
 import { AuthStatus } from '../types/auth';
-import { InitialState } from '../store/state';
+import { InitialState } from '../store/reducer';
 import { FilmDispatch } from '../store';
 
 export function Header({children}: {children?: React.ReactNode}) {
   const dispatch = useDispatch<FilmDispatch>();
-  const { authStatus, authedUserInfo } = useSelector((state: InitialState) => state.films);
+  const { authStatus, authedUserInfo } = useSelector((state: InitialState) => state.auth);
   const navigate = useNavigate();
 
   const handleSignOutClick = () => {

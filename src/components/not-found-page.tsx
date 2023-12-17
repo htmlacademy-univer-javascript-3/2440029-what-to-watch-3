@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { useSelector} from 'react-redux';
-import { InitialState } from '../store/state';
+import { InitialState } from '../store/reducer';
 import { AuthStatus } from '../types/auth';
 
 
@@ -23,7 +23,7 @@ type ProtectedWrapperProps = {
 export const ProtectedWrapper: React.FC<ProtectedWrapperProps> = ({ children }) => {
   const navigate = useNavigate();
 
-  const authStatus = useSelector((state: InitialState) => state.films.authStatus);
+  const authStatus = useSelector((state: InitialState) => state.auth.authStatus);
   const isAuthorized = authStatus === AuthStatus.AUTHENTICATED;
 
   useEffect(() => {
