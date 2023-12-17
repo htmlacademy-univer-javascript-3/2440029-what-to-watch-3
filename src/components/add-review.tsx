@@ -1,10 +1,10 @@
 import ReviewForm from './review';
 import { useSelector } from 'react-redux';
-import { InitialState } from '../store/state';
+import { InitialState } from '../store/reducer';
 import { Header } from './header';
 
 function AddReview() {
-  const film = useSelector((state: InitialState) => state.films.currentFilm);
+  const film = useSelector((state: InitialState) => state.filmsData.currentFilm);
   if (!film) {
     return null;
   }

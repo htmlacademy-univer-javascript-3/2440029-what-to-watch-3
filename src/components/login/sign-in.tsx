@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../../store/api-action';
-import { InitialState } from '../../store/state';
+import { InitialState } from '../../store/reducer';
 import { AuthStatus } from '../../types/auth';
-import SignInError from './sign-error';
+// import SignInError from './sign-error';
 import Footer from '../footer';
 import { FilmDispatch } from '../../store';
 
@@ -14,7 +14,7 @@ export function SignInForm() {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch<FilmDispatch>();
   const navigate = useNavigate();
-  const { authStatus, errorMsg } = useSelector((state: InitialState) => state.films);
+  const { authStatus } = useSelector((state: InitialState) => state.auth);
 
   const handleInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = evt.target;
@@ -52,7 +52,7 @@ export function SignInForm() {
       </header>
       <div className='sign-in user-page__content'>
         <form className='sign-in__form' onSubmit={handleSubmit}>
-          {errorMsg && <SignInError />}
+          {/* { <SignInError />} */}
           <div className='sign-in__fields'>
             <div className='sign-in__field'>
               <input className='sign-in__input' type='email' placeholder='Email address' name='user-email' id='user-email' value={email} onChange={handleInputChange} />

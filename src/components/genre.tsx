@@ -1,10 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { setGenre } from '../store/action';
-import { InitialState } from '../store/state';
+import { InitialState } from '../store/reducer';
 
 export function Genres() {
   const dispatch = useDispatch();
-  const films = useSelector((state: InitialState) => state.films);
+  const films = useSelector((state: InitialState) => state.filmsData);
   const uniqueGenres = ['All genres', ...new Set(films.allFilms.map((film) => film.genre))];
 
   const GenreItem = ({ genre }: { genre: string | undefined }) => {

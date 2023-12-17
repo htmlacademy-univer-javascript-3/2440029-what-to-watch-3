@@ -1,13 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AuthResponse, AuthStatusResponse } from '../types/auth';
 import { FilmShortInfo, FilmFullInfo, FilmReview } from '../types/films';
-import { InitialState } from './state';
+import { InitialState } from './reducer';
 import { AxiosInstance } from 'axios';
 
 export const fetchMovies = createAsyncThunk<FilmShortInfo[], void, { state: InitialState; extra: AxiosInstance }>(
   'films/fetchFilms',
   async (_, { extra }) => {
-    await new Promise((resolve) => setTimeout(resolve, 1300));
     const { data } = await extra.get<FilmShortInfo[]>('/films');
     return data;
   }

@@ -3,7 +3,7 @@ import PromoFilm from './promo-film';
 import Genres from './genre';
 import Footer from './footer';
 import { useDispatch, useSelector } from 'react-redux';
-import { InitialState } from '../store/state';
+import { InitialState } from '../store/reducer';
 import { useEffect } from 'react';
 import { showMore, setMoviesByGenre } from '../store/action';
 import { ShowMore } from './show-more';
@@ -21,7 +21,7 @@ type MainPageProps = {
 
 function MainPage({ promoFilmTitle, promoFilmGenre, promoFilmReleaseDate }: MainPageProps) {
   const dispatch = useDispatch<FilmDispatch>();
-  const { genre, allFilms, displayedFilmsCount, filteredFilms, isLoading } = useSelector((state: InitialState) => state.films);
+  const { genre, allFilms, displayedFilmsCount, filteredFilms, isLoading } = useSelector((state: InitialState) => state.filmsData);
 
   useEffect(() => {
     dispatch(fetchMovies());
