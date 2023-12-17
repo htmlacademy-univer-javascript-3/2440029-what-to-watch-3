@@ -32,3 +32,14 @@ export type FilmReview ={
     comment: string;
     rating: number;
 }
+
+export type PromoFilmInfo = {
+    id: string;
+    genre: string;
+    released: number;
+    isFavorite: boolean;
+    name: string;
+    backgroundImage: string;
+    videoLink: string;
+    posterImage: string;
+}
