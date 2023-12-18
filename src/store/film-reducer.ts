@@ -1,6 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { FilmShortInfo, FilmFullInfo } from '../types/films';
-import { fetchMovies, fetchFilmById } from './api-action';
+import { FilmShortInfo, FilmFullInfo, PromoFilmInfo } from '../types/films';
+import { fetchMovies, fetchFilmById, fetchPromoFilm, fetchFavoriteFilms } from './api-action';
 import { getMoviesByGenre, setGenre, setMoviesByGenre, showMore } from './action';
 
 export const SHOWING_FILMS_COUNT = 8;
@@ -14,6 +14,8 @@ export interface FilmsDataState {
     genre: string;
     displayedFilmsCount: number;
     filteredFilms: FilmShortInfo[];
+    promoFilm: PromoFilmInfo | null;
+    favoriteFilms: FilmShortInfo[];
 }
 
 const initialState: FilmsDataState = {
@@ -24,7 +26,8 @@ const initialState: FilmsDataState = {
   genre: 'All genres',
   displayedFilmsCount: SHOWING_FILMS_COUNT,
   filteredFilms: [],
-
+  promoFilm: null,
+  favoriteFilms: [],
 };
 
 export const filmsDataReducer = createReducer(initialState, (builder) => {
@@ -68,5 +71,19 @@ export const filmsDataReducer = createReducer(initialState, (builder) => {
     })
     .addCase(setMoviesByGenre, (state, action) => {
       state.filteredFilms = action.payload;
+    })
+    .addCase(fetchPromoFilm.pending, (state) => {
+      state.isLoading = true;
+    })
+    .addCase(fetchPromoFilm.fulfilled, (state, action) => {
+      state.promoFilm = action.payload;
+      state.isLoading = false;
+    })
+    .addCase(fetchPromoFilm.rejected, (state, action) => {
+      state.isLoading = false;
+      state.errorMsg = action.error.message || 'Failed to load promo movie';
+    })
+    .addCase(fetchFavoriteFilms.fulfilled, (state, action) => {
+      state.favoriteFilms = action.payload;
     });
 });

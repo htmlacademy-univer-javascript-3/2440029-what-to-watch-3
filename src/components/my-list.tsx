@@ -1,59 +1,30 @@
-// import { films } from '../mocks/films';
-// import MoviesList from './movies';
+import Footer from './footer';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { FilmDispatch } from '../store';
+import { fetchFavoriteFilms } from '../store/api-action';
+import { InitialState } from '../store/reducer';
+import MoviesList from './movies';
+import { ListHeader } from './my-list-header';
 
 
 function MyList() {
+  const dispatch = useDispatch<FilmDispatch>();
+  const { favoriteFilms } = useSelector((state: InitialState) => state.filmsData);
+
+  useEffect(() => {
+    dispatch(fetchFavoriteFilms());
+  }, [dispatch]);
+
   return (
     <div className='user-page'>
-      <header className='page-header user-page__head'>
-        <div className='logo'>
-          <a href='#' className='logo__link'>
-            <span className='logo__letter logo__letter--1'>W</span>
-            <span className='logo__letter logo__letter--2'>T</span>
-            <span className='logo__letter logo__letter--3'>W</span>
-          </a>
-        </div>
-
-        <h1 className='page-title user-page__title'>
-          My list <span className='user-page__film-count'>9</span>
-        </h1>
-        <ul className='user-block'>
-          <li className='user-block__item'>
-            <div className='user-block__avatar'>
-              <img
-                src='/img/avatar.jpg'
-                alt='User avatar'
-                width='63'
-                height='63'
-              />
-            </div>
-          </li>
-          <li className='user-block__item'>
-            <a className='user-block__link' href='#'>
-              Sign out
-            </a>
-          </li>
-        </ul>
-      </header>
-
+      <ListHeader totalFilms={favoriteFilms.length} />
       <section className='catalog'>
         <h2 className='catalog__title visually-hidden'>Catalog</h2>
-        {/* <MoviesList films={films.slice(1, 4)} /> */}
+
+        <MoviesList films={favoriteFilms} />
       </section>
-
-      <footer className='page-footer'>
-        <div className='logo'>
-          <a href='/' className='logo__link logo__link--light'>
-            <span className='logo__letter logo__letter--1'>W</span>
-            <span className='logo__letter logo__letter--2'>T</span>
-            <span className='logo__letter logo__letter--3'>W</span>
-          </a>
-        </div>
-
-        <div className='copyright'>
-          <p>© 2019 What to watch Ltd.</p>
-        </div>
-      </footer>
+      <Footer/>
     </div>
   );
 }

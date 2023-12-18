@@ -12,14 +12,7 @@ import { fetchMovies } from '../store/api-action';
 import { LoadingScreen } from '../pages/loading-screen';
 
 
-type MainPageProps = {
-  promoFilmTitle: string;
-  promoFilmGenre: string;
-  promoFilmReleaseDate: string;
-}
-
-
-function MainPage({ promoFilmTitle, promoFilmGenre, promoFilmReleaseDate }: MainPageProps) {
+function MainPage() {
   const dispatch = useDispatch<FilmDispatch>();
   const { genre, allFilms, displayedFilmsCount, filteredFilms, isLoading } = useSelector((state: InitialState) => state.filmsData);
 
@@ -45,15 +38,7 @@ function MainPage({ promoFilmTitle, promoFilmGenre, promoFilmReleaseDate }: Main
 
   return (
     <>
-      <PromoFilm
-        title={promoFilmTitle}
-        genre={promoFilmGenre}
-        releaseDate={promoFilmReleaseDate}
-        backgroundUrl='img/bg-the-grand-budapest-hotel.jpg'
-        posterUrl='img/the-grand-budapest-hotel-poster.jpg'
-      />
-
-
+      <PromoFilm />
       <div className='page-content'>
         <section className='catalog'>
           <h2 className='catalog__title visually-hidden'>Catalog</h2>

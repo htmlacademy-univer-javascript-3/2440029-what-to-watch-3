@@ -14,6 +14,7 @@ import Tabs from './tabs/tabs';
 import MoviesList from './movies';
 import { Header } from './header';
 import { AuthStatus } from '../types/auth';
+import FavoriteListButton from './add-to-mylist';
 
 function Film() {
   const { id } = useParams<{id: string}>();
@@ -78,7 +79,8 @@ function Film() {
                   </svg>
                   <span>Play</span>
                 </Link>
-
+                {authStatus === AuthStatus.AUTHENTICATED && <FavoriteListButton movieId={film.id} isListed={film.isFavorite!} />}
+                {/*
                 <Link
                   to={'/mylist'}
                   className='btn btn--list film-card__button'
@@ -88,7 +90,7 @@ function Film() {
                   </svg>
                   <span>My list</span>
                   <span className='film-card__count'>3</span>
-                </Link>
+                </Link> */}
 
                 <Link
                   to={`/films/${film.id}/review`}
