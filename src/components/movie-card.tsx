@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unused-prop-types */
 import { Link } from 'react-router-dom';
 import useDelayedHover from '../hooks/delayed-hover';
 import VideoPlayer from '../utils/video-player';
@@ -6,23 +5,10 @@ import VideoPlayer from '../utils/video-player';
 
 export type MovieCardProps = {
   id: string;
-  releaseDate?: string;
-  genre?: string;
   trailer: string;
   title: string;
   previewSrc: string;
-  description?: string;
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
 };
-
-// export type Review = {
-//   reviewText: string;
-//   reviewAuthor: string;
-//   reviewDate: string;
-//   reviewFormattedDate: string;
-//   reviewRating: number;
-// }
 
 function MovieCard({
   id,

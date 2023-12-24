@@ -1,7 +1,7 @@
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { FilmFullInfo } from '../../types/films';
-import OverviewTab from './overview';
 import DetailsTab from './details';
+import OverviewTab from './overview';
 import ReviewsTab from './reviews';
 
 

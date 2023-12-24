@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AuthResponse, AuthStatusResponse } from '../types/auth';
-import { FilmShortInfo, FilmFullInfo, FilmReview, PromoFilmInfo } from '../types/films';
-import { InitialState } from './reducer';
 import { AxiosInstance } from 'axios';
+import { AuthResponse, AuthStatusResponse } from '../types/auth';
+import { FilmFullInfo, FilmReview, FilmShortInfo, PromoFilmInfo } from '../types/films';
+import { InitialState } from './reducer';
 
 export const fetchMovies = createAsyncThunk<FilmShortInfo[], void, { state: InitialState; extra: AxiosInstance }>(
   'films/fetchFilms',

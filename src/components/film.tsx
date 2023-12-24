@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import React from 'react';
 import Footer from './footer';
 import { useEffect, useState } from 'react';
@@ -16,38 +15,47 @@ import { Header } from './header';
 import { AuthStatus } from '../types/auth';
 import FavoriteListButton from './add-to-mylist';
 
-function Film() {
-  const { id } = useParams<{id: string}>();
+const useFilmData = (filmId: string) => {
   const dispatch = useDispatch<FilmDispatch>();
   const film = useSelector((state: InitialState) => state.filmsData.currentFilm);
   const isLoading = useSelector((state: InitialState) => state.filmsData.isLoading);
   const errorMsg = useSelector((state: InitialState) => state.filmsData.errorMsg);
-  const authStatus = useSelector((state: InitialState) => state.auth.authStatus);
   const [similarFilms, setSimilarFilms] = useState<FilmShortInfo[]>([]);
 
   useEffect(() => {
-    dispatch(fetchFilmById(id as string));
-    dispatch(fetchSimilarFilms(id as string))
-      .unwrap()
-      .then((data) => {
+    const fetchFilmData = async () => {
+      await dispatch(fetchFilmById(filmId));
+      try {
+        const data = await dispatch(fetchSimilarFilms(filmId)).unwrap();
         setSimilarFilms(data);
-      })
-      .catch((err) => localStorage.setItem('error', err));
+      } catch (err) {
+        const errorMessage = typeof err === 'string' ? err : 'Unknown error occurred';
+        localStorage.setItem('error', errorMessage);
+      }
+    };
 
-  }, [dispatch, id]);
+    fetchFilmData();
+  }, [dispatch, filmId]);
+
+  return { film, similarFilms, isLoading, errorMsg };
+};
+
+function Film() {
+  const { id } = useParams<{ id: string }>();
+  const { film, similarFilms, isLoading, errorMsg } = useFilmData(id as string);
+  const authStatus = useSelector((state: InitialState) => state.auth.authStatus);
 
   if (isLoading) {
     return <LoadingScreen />;
   }
 
   if (errorMsg) {
-    return <div>Something went wrong {errorMsg}</div>;
+    return <div>Something went wrong: {errorMsg}</div>;
   }
 
   if (!film) {
     return <NotFoundPage />;
   }
-
 
   return (
     <React.Fragment>
@@ -80,18 +88,6 @@ function Film() {
                   <span>Play</span>
                 </Link>
                 {authStatus === AuthStatus.AUTHENTICATED && <FavoriteListButton movieId={film.id} isListed={film.isFavorite!} />}
-                {/*
-                <Link
-                  to={'/mylist'}
-                  className='btn btn--list film-card__button'
-                >
-                  <svg viewBox='0 0 19 20' width='19' height='20'>
-                    <use xlinkHref='#add'></use>
-                  </svg>
-                  <span>My list</span>
-                  <span className='film-card__count'>3</span>
-                </Link> */}
-
                 <Link
                   to={`/films/${film.id}/review`}
                   className='btn film-card__button'

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FilmDispatch } from '../store';
-import { fetchFavoriteFilms, postFavoriteFilmByAction, fetchFilmById } from '../store/api-action';
+import { fetchFavoriteFilms, fetchFilmById, postFavoriteFilmByAction } from '../store/api-action';
 import { InitialState } from '../store/reducer';
 
 const FavoriteListButton = ({ movieId, isListed }: { movieId: string; isListed: boolean }) => {
@@ -12,8 +12,7 @@ const FavoriteListButton = ({ movieId, isListed }: { movieId: string; isListed: 
   }, [dispatchAction]);
 
   const onClickFavorite = () => {
-    const newStatus = isListed ? 0 : 1;
-    dispatchAction(postFavoriteFilmByAction({id: movieId, action: newStatus})).unwrap().then(() => {
+    dispatchAction(postFavoriteFilmByAction({id: movieId, action: isListed ? 0 : 1})).unwrap().then(() => {
       dispatchAction(fetchFilmById(movieId));
     });
   };

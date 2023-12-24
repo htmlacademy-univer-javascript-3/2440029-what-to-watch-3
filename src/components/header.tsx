@@ -1,9 +1,9 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
-import { logout } from '../store/api-action';
-import { AuthStatus } from '../types/auth';
-import { InitialState } from '../store/reducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import { FilmDispatch } from '../store';
+import { logout } from '../store/api-action';
+import { InitialState } from '../store/reducer';
+import { AuthStatus } from '../types/auth';
 
 export function Header({children}: {children?: React.ReactNode}) {
   const dispatch = useDispatch<FilmDispatch>();
@@ -19,14 +19,16 @@ export function Header({children}: {children?: React.ReactNode}) {
       return (
         <>
           <li className='user-block__item'>
-            <div className='user-block__avatar'>
-              <img
-                src={authedUserInfo?.avatarUrl}
-                alt='User avatar'
-                width='63'
-                height='63'
-              />
-            </div>
+            <Link to="/mylist">
+              <div className='user-block__avatar'>
+                <img
+                  src={authedUserInfo?.avatarUrl}
+                  alt='User avatar'
+                  width='63'
+                  height='63'
+                />
+              </div>
+            </Link>
           </li>
           <li className='user-block__item'>
             <a className='user-block__link' onClick={handleSignOutClick}>Sign out</a>

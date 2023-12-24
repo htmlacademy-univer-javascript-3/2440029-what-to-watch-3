@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setGenre } from '../store/action';
 import { InitialState } from '../store/reducer';
 

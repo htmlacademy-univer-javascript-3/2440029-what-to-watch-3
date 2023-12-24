@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { FilmDispatch } from '../../store';
 import { login } from '../../store/api-action';
 import { InitialState } from '../../store/reducer';
 import { AuthStatus } from '../../types/auth';
-// import SignInError from './sign-error';
 import Footer from '../footer';
-import { FilmDispatch } from '../../store';
 
 
 export function SignInForm() {
@@ -15,6 +14,7 @@ export function SignInForm() {
   const dispatch = useDispatch<FilmDispatch>();
   const navigate = useNavigate();
   const { authStatus } = useSelector((state: InitialState) => state.auth);
+  const { authError } = useSelector((state: InitialState) => state.auth);
 
   const handleInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = evt.target;
@@ -51,8 +51,11 @@ export function SignInForm() {
 
       </header>
       <div className='sign-in user-page__content'>
+        {authError &&
+        <div className='sign-in__message'>
+          <p>Failed to authorize. <br /> Please enter a correct combintaion of email and password.</p>
+        </div>}
         <form className='sign-in__form' onSubmit={handleSubmit}>
-          {/* { <SignInError />} */}
           <div className='sign-in__fields'>
             <div className='sign-in__field'>
               <input className='sign-in__input' type='email' placeholder='Email address' name='user-email' id='user-email' value={email} onChange={handleInputChange} />

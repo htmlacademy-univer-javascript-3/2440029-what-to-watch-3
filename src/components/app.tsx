@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import MainPage from './main';
-import NotFoundPage, { ProtectedWrapper } from './not-found-page';
-import SignInForm from './login/sign-in';
-import MyList from './my-list';
-import Film from './film';
 import AddReview from './add-review';
+import Film from './film';
+import SignInForm from './login/sign-in';
+import MainPage from './main';
+import MyList from './my-list';
+import NotFoundPage, { ProtectedWrapper } from './not-found-page';
 import Player from './player/player';
 
 

@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 import React, { useState } from 'react';
-import {useParams} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 import { FilmDispatch } from '../store';
 import { postReview } from '../store/api-action';
-import { useNavigate } from 'react-router-dom';
 
 const RatingStars = ({
   rating,

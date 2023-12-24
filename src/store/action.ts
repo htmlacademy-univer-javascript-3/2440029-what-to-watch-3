@@ -1,6 +1,6 @@
 import { createAction } from '@reduxjs/toolkit';
-import { FilmShortInfo } from '../types/films';
 import { AuthStatus } from '../types/auth';
+import { FilmShortInfo } from '../types/films';
 
 
 export const setGenre = createAction<string>('setGenre');
