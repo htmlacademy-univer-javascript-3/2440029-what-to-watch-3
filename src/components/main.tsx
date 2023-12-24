@@ -1,15 +1,15 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { LoadingScreen } from '../pages/loading-screen';
+import { FilmDispatch } from '../store';
+import { setMoviesByGenre, showMore } from '../store/action';
+import { fetchMovies } from '../store/api-action';
+import { InitialState } from '../store/reducer';
+import Footer from './footer';
+import Genres from './genre';
 import MoviesList from './movies';
 import PromoFilm from './promo-film';
-import Genres from './genre';
-import Footer from './footer';
-import { useDispatch, useSelector } from 'react-redux';
-import { InitialState } from '../store/reducer';
-import { useEffect } from 'react';
-import { showMore, setMoviesByGenre } from '../store/action';
 import { ShowMore } from './show-more';
-import { FilmDispatch } from '../store';
-import { fetchMovies } from '../store/api-action';
-import { LoadingScreen } from '../pages/loading-screen';
 
 
 function MainPage() {

@@ -1,7 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { FilmShortInfo, FilmFullInfo, PromoFilmInfo } from '../types/films';
-import { fetchMovies, fetchFilmById, fetchPromoFilm, fetchFavoriteFilms } from './api-action';
+import { FilmFullInfo, FilmShortInfo, PromoFilmInfo } from '../types/films';
 import { getMoviesByGenre, setGenre, setMoviesByGenre, showMore } from './action';
+import { fetchFavoriteFilms, fetchFilmById, fetchMovies, fetchPromoFilm } from './api-action';
 
 export const SHOWING_FILMS_COUNT = 8;
 

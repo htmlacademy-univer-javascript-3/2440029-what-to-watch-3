@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-
 import { useState, useEffect, useRef } from 'react';
 
 const useDelayedHover = (hoverDelay: number) => {

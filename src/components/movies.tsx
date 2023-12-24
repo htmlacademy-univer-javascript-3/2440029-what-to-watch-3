@@ -1,4 +1,3 @@
-// import { MovieCardProps } from './movie-card';
 import { FilmShortInfo } from '../types/films';
 
 import MovieCard from './movie-card';
@@ -7,7 +6,7 @@ type MovieListProps = {
   films: FilmShortInfo[];
 }
 
-function MoviesList({films}: MovieListProps) {
+function MoviesList({ films }: MovieListProps) {
 
   return (
     <div className='catalog__films-list'>

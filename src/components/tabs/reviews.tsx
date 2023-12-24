@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
-import { FilmReview } from '../../types/films';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { FilmDispatch } from '../../store';
 import { fetchFilmReviews } from '../../store/api-action';
+import { FilmReview } from '../../types/films';
 
 function formatDate(date: string) {
   const dateObj = new Date(date);

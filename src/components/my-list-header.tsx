@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { FilmDispatch } from '../store';
-import { InitialState } from '../store/reducer';
 import { logout } from '../store/api-action';
+import { InitialState } from '../store/reducer';
 import { AuthStatus } from '../types/auth';
 
 export function ListHeader({ totalFilms }: { totalFilms: number }) {
@@ -36,11 +36,11 @@ export function ListHeader({ totalFilms }: { totalFilms: number }) {
   return (
     <header className="page-header user-page__head">
       <div className="logo">
-        <a className="logo__link">
+        <Link to="/" className="logo__link">
           <span className="logo__letter logo__letter--1">W</span>
           <span className="logo__letter logo__letter--2">T</span>
           <span className="logo__letter logo__letter--3">W</span>
-        </a>
+        </Link>
       </div>
 
       <h1 className="page-title user-page__title">

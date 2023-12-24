@@ -1,9 +1,9 @@
-import Footer from './footer';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FilmDispatch } from '../store';
 import { fetchFavoriteFilms } from '../store/api-action';
 import { InitialState } from '../store/reducer';
+import Footer from './footer';
 import MoviesList from './movies';
 import { ListHeader } from './my-list-header';
 
